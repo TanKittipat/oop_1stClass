@@ -139,97 +139,152 @@ class Credit extends Payment {
   }
 }
 
-// สร้างตัวแปร
+// // สร้างตัวแปร
+// const oldMain = () => {
+//   let customer1 = new Customer("Tinny", "Nakhon Pathom");
+//   let customer2 = new Customer("นาย A นามสมมุติ", "ดาวอังคาร");
+//   // console.log(customer1);
+//   // Product Items
+//   const item1 = new Item("0.6", "All in One Bucket", 299);
+//   const item2 = new Item("0.3", "Chicken Pop", 39);
+//   const item3 = new Item("0.4", "The boxs All star", 159);
+//   const item4 = new Item("0.5", "Chick & Share Team Chicken Pop", 99);
+//   const item5 = new Item("0.4", "KFC Rice Bowl", 89);
+
+//   // Create Order
+//   const order1 = new Order("2024/01/08", "In Process");
+//   const order2 = new Order("2024/01/09", "In Process");
+
+//   // Add order to customer
+//   customer1.addOrder(order1);
+//   customer2.addOrder(order2);
+
+//   // Create order detail
+//   const orderDetail1 = new OrderDetail(5, "Tax included");
+//   orderDetail1.addItem(item3);
+//   const orderDetail2 = new OrderDetail(4, "Tax included");
+//   orderDetail2.addItem(item1);
+
+//   const orderDetail3 = new OrderDetail(3, "Tax included");
+//   orderDetail3.addItem(item2);
+//   const orderDetail4 = new OrderDetail(4, "Tax included");
+//   orderDetail4.addItem(item4);
+//   const orderDetail5 = new OrderDetail(5, "Tax included");
+//   orderDetail5.addItem(item5);
+
+//   // Add orderdetail to an order
+//   order1.addOrderDetail(orderDetail1);
+//   order1.addOrderDetail(orderDetail2);
+
+//   order2.addOrderDetail(orderDetail3);
+//   order2.addOrderDetail(orderDetail4);
+//   order2.addOrderDetail(orderDetail5);
+
+//   // console.log(order1);
+//   // console.log(orderDetail1);
+//   console.log("ชื่อ : " + customer1.name);
+//   console.log("จำนวนคำสั่งซื้อที่ : " + customer1.orders.length);
+//   for (i = 0; i < customer1.orders.length; i++) {
+//     console.log("คำสั่งซื้อที่ : " + (i + 1));
+//     let total = 0;
+//     for (j = 0; j < customer1.orders[i].orderDetails.length; j++) {
+//       const item = customer1.orders[i].orderDetails[j].item;
+//       const quantity = customer1.orders[i].orderDetails[j].quantity;
+//       const subTotal = quantity * item.price;
+//       total += subTotal;
+//       console.log(
+//         "ลำดับที่ : " +
+//           (j + 1) +
+//           " " +
+//           item.description +
+//           " จำนวน " +
+//           quantity +
+//           " รายการ  ราคา " +
+//           subTotal +
+//           " บาท"
+//       );
+//     }
+//     console.log("รวมทั้งหมด " + total + " บาท");
+//   }
+
+//   console.log("ชื่อ : " + customer2.name);
+//   console.log("จำนวนคำสั่งซื้อที่ : " + customer2.orders.length);
+//   for (i = 0; i < customer2.orders.length; i++) {
+//     console.log("คำสั่งซื้อที่ : " + (i + 1));
+//     let total = 0;
+//     for (j = 0; j < customer2.orders[i].orderDetails.length; j++) {
+//       const item = customer2.orders[i].orderDetails[j].item;
+//       const quantity = customer2.orders[i].orderDetails[j].quantity;
+//       const subTotal = quantity * item.price;
+//       total += subTotal;
+//       console.log(
+//         "ลำดับที่ : " +
+//           (j + 1) +
+//           " " +
+//           item.description +
+//           " จำนวน " +
+//           quantity +
+//           " รายการ  ราคา " +
+//           subTotal +
+//           " บาท"
+//       );
+//     }
+//     console.log("รวมทั้งหมด " + total + " บาท");
+//   }
+// };
+
+// oldMain();
+
 const main = () => {
-  let customer1 = new Customer("Tinny", "Nakhon Pathom");
-  let customer2 = new Customer("นาย A นามสมมุติ", "ดาวอังคาร");
-  // console.log(customer1);
-  // Product Items
-  const item1 = new Item("0.6", "All in One Bucket", 299);
-  const item2 = new Item("0.3", "Chicken Pop", 39);
-  const item3 = new Item("0.4", "The boxs All star", 159);
-  const item4 = new Item("0.5", "Chick & Share Team Chicken Pop", 99);
-  const item5 = new Item("0.4", "KFC Rice Bowl", 89);
+  let customer3 = new Customer("John Doe", "London");
+  // console.log(customer3);
 
-  // Create Order
-  const order1 = new Order("2024/01/08", "In Process");
-  const order2 = new Order("2024/01/09", "In Process");
+  const item6 = new Item("0.2", "Spaghetti", "199");
+  const item7 = new Item("0.1", "Pizza", "99");
+  const item8 = new Item("0.1", "Icecream", "59");
+  const item9 = new Item("0.2", "lasagna", "199");
+  const item10 = new Item("0.05", "Wine", "100");
 
-  // Add order to customer
-  customer1.addOrder(order1);
-  customer2.addOrder(order2);
+  const order3 = new Order("2024/01/10", "In process");
+  const order4 = new Order("2024/01/10", "In process");
 
-  // Create order detail
-  const orderDetail1 = new OrderDetail(5, "Tax included");
-  orderDetail1.addItem(item3);
-  const orderDetail2 = new OrderDetail(4, "Tax included");
-  orderDetail2.addItem(item1);
+  const orderDetail6 = new OrderDetail("3", "Tax included");
+  const orderDetail7 = new OrderDetail("3", "Tax");
 
-  const orderDetail3 = new OrderDetail(3, "Tax included");
-  orderDetail3.addItem(item2);
-  const orderDetail4 = new OrderDetail(4, "Tax included");
-  orderDetail4.addItem(item4);
-  const orderDetail5 = new OrderDetail(5, "Tax included");
-  orderDetail5.addItem(item5);
+  orderDetail6.addItem(item6);
+  orderDetail7.addItem(item10);
 
-  // Add orderdetail to an order
-  order1.addOrderDetail(orderDetail1);
-  order1.addOrderDetail(orderDetail2);
+  order3.addOrderDetail(orderDetail6);
+  order4.addOrderDetail(orderDetail7);
 
-  order2.addOrderDetail(orderDetail3);
-  order2.addOrderDetail(orderDetail4);
-  order2.addOrderDetail(orderDetail5);
+  customer3.addOrder(order3);
+  customer3.addOrder(order4);
 
-  // console.log(order1);
-  // console.log(orderDetail1);
-  console.log("ชื่อ : " + customer1.name);
-  console.log("จำนวนคำสั่งซื้อที่ : " + customer1.orders.length);
-  for (i = 0; i < customer1.orders.length; i++) {
+  console.log("ชื่อ : " + customer3.name);
+  console.log("จำนวนครั้ง : " + customer3.orders.length);
+  for (i = 0; i < customer3.orders.length; i++) {
     console.log("คำสั่งซื้อที่ : " + (i + 1));
-    let total = 0;
-    for (j = 0; j < customer1.orders[i].orderDetails.length; j++) {
-      const item = customer1.orders[i].orderDetails[j].item;
-      const quantity = customer1.orders[i].orderDetails[j].quantity;
-      const subTotal = quantity * item.price;
-      total += subTotal;
+    for (j = 0; j < customer3.orders[i].orderDetails.length; j++) {
       console.log(
         "ลำดับที่ : " +
           (j + 1) +
-          " " +
-          item.description +
-          " จำนวน " +
-          quantity +
-          " รายการ  ราคา " +
-          subTotal +
+          " รายการ : " +
+          customer3.orders[i].orderDetails[j].item.description +
+          " จำนวน : " +
+          customer3.orders[i].orderDetails[j].quantity +
+          " ราคา : " +
+          customer3.orders[i].orderDetails[j].calcSubTotal() +
           " บาท"
       );
-    }
-    console.log("รวมทั้งหมด " + total + " บาท");
-  }
-
-  console.log("ชื่อ : " + customer2.name);
-  console.log("จำนวนคำสั่งซื้อที่ : " + customer2.orders.length);
-  for (i = 0; i < customer2.orders.length; i++) {
-    console.log("คำสั่งซื้อที่ : " + (i + 1));
-    let total = 0;
-    for (j = 0; j < customer2.orders[i].orderDetails.length; j++) {
-      const item = customer2.orders[i].orderDetails[j].item;
-      const quantity = customer2.orders[i].orderDetails[j].quantity;
-      const subTotal = quantity * item.price;
-      total += subTotal;
       console.log(
-        "ลำดับที่ : " +
-          (j + 1) +
-          " " +
-          item.description +
-          " จำนวน " +
-          quantity +
-          " รายการ  ราคา " +
-          subTotal +
-          " บาท"
+        "น้ำหนัก : " +
+          customer3.orders[i].orderDetails[j].calcWeight() +
+          " กิโลกรัม"
+      );
+      console.log(
+        "ภาษี : " + customer3.orders[i].orderDetails[j].calcTax() + " บาท"
       );
     }
-    console.log("รวมทั้งหมด " + total + " บาท");
   }
 };
 
