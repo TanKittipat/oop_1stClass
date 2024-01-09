@@ -19,7 +19,7 @@ class Order {
 
   calcSubTotal() {
     let subTotal = 0;
-    for (i = 0; i < this.orderDetails.length; i++) {
+    for (let i = 0; i < this.orderDetails.length; i++) {
       subTotal += this.orderDetails[i].subTotal();
     }
     return subTotal;
@@ -30,7 +30,7 @@ class Order {
   }
   calcTax() {
     let tax = 0;
-    for (i = 0; i < this.orderDetails.length; i++) {
+    for (let i = 0; i < this.orderDetails.length; i++) {
       tax += this.orderDetails[i].calcTax();
     }
     return tax;
@@ -40,7 +40,7 @@ class Order {
   }
   calcTotalWeight() {
     let weight = 0;
-    for (i = 0; i < this.orderDetails.length; i++) {
+    for (let i = 0; i < this.orderDetails.length; i++) {
       weight += this.orderDetails[i].calcTotalWeight();
     }
     return weight;
