@@ -20,7 +20,7 @@ class Order {
   calcSubTotal() {
     let subTotal = 0;
     for (let i = 0; i < this.orderDetails.length; i++) {
-      subTotal += this.orderDetails[i].subTotal();
+      subTotal += this.orderDetails[i].calcSubTotal();
     }
     return subTotal;
     // return this.orderDetails.reduce(
@@ -262,29 +262,30 @@ const main = () => {
 
   console.log("ชื่อ : " + customer3.name);
   console.log("จำนวนครั้ง : " + customer3.orders.length);
-  for (i = 0; i < customer3.orders.length; i++) {
-    console.log("คำสั่งซื้อที่ : " + (i + 1));
-    for (j = 0; j < customer3.orders[i].orderDetails.length; j++) {
+  for (k = 0; k < customer3.orders.length; k++) {
+    console.log("คำสั่งซื้อที่ : " + (k + 1));
+    for (j = 0; j < customer3.orders[k].orderDetails.length; j++) {
       console.log(
         "ลำดับที่ : " +
           (j + 1) +
           " รายการ : " +
-          customer3.orders[i].orderDetails[j].item.description +
+          customer3.orders[k].orderDetails[j].item.description +
           " จำนวน : " +
-          customer3.orders[i].orderDetails[j].quantity +
+          customer3.orders[k].orderDetails[j].quantity +
           " ราคา : " +
-          customer3.orders[i].orderDetails[j].calcSubTotal() +
+          customer3.orders[k].orderDetails[j].calcSubTotal() +
           " บาท"
       );
       console.log(
         "น้ำหนัก : " +
-          customer3.orders[i].orderDetails[j].calcWeight() +
+          customer3.orders[k].orderDetails[j].calcWeight() +
           " กิโลกรัม"
       );
       console.log(
-        "ภาษี : " + customer3.orders[i].orderDetails[j].calcTax() + " บาท"
+        "ภาษี : " + customer3.orders[k].orderDetails[j].calcTax() + " บาท"
       );
     }
+    console.log("รวม : " + customer3.orders[k].calcTotal());
   }
 };
 
