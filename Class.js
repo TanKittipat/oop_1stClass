@@ -59,6 +59,7 @@ class Order {
       );
     }
     console.log("รวมทั้งหมด : " + this.calcTotal() + " บาท");
+    this.payment.printDetail();
   }
 }
 
@@ -124,12 +125,18 @@ class Payment {
   constructor(amount) {
     this.amount = amount;
   }
+  printDetail() {
+    console.log("ชำระเงินด้วย...");
+  }
 }
 
 class Cash extends Payment {
   constructor(amount, cashTendered) {
     super(amount);
     this.cashTendered = cashTendered;
+  }
+  printDetail() {
+    console.log("ชำระด้วยเงินสด จำนวน " + this.amount + " บาท");
   }
 }
 
@@ -143,6 +150,9 @@ class Check extends Payment {
   authorized() {
     console.log("456");
   }
+  printDetail() {
+    console.log("ชำระด้วยเช็ค จำนวน " + this.amount + " บาท");
+  }
 }
 
 class Credit extends Payment {
@@ -155,6 +165,9 @@ class Credit extends Payment {
 
   authorized() {
     console.log("789");
+  }
+  printDetail() {
+    console.log("ชำระด้วยบัตรเครดิต จำนวน " + this.amount + " บาท");
   }
 }
 
@@ -324,6 +337,14 @@ const main = () => {
   const orderDetail6 = new OrderDetail("3", "Tax included");
   const orderDetail7 = new OrderDetail("3", "Tax");
 
+  const cash = new Cash(order3.calcTotal(), "");
+  const credit = new Credit(
+    order4.calcTotal(),
+    "9999999999",
+    "credit",
+    "10/24"
+  );
+
   orderDetail6.addItem(item6);
   orderDetail7.addItem(item10);
 
@@ -332,6 +353,9 @@ const main = () => {
 
   customer3.addOrder(order3);
   customer3.addOrder(order4);
+
+  customer3.orders[0].addPayment(cash);
+  customer3.orders[1].addPayment(credit);
 
   console.log("ชื่อ : " + customer3.name);
   console.log("จำนวนคำสั่งซื้อ : " + customer3.orders.length);
