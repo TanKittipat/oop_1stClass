@@ -51,6 +51,15 @@ class Order {
   addOrderDetail(orderDetail) {
     this.orderDetails.push(orderDetail);
   }
+  printDetail() {
+    let total = 0;
+    for (let i = 0; i < this.orderDetails.length; i++) {
+      console.log(
+        "ลำดับที่ : " + (i + 1) + " " + this.orderDetails[i].getDetail()
+      );
+    }
+    console.log("รวมทั้งหมด : " + this.calcTotal() + " บาท");
+  }
 }
 
 class OrderDetail {
@@ -71,6 +80,16 @@ class OrderDetail {
   }
   addItem(item) {
     this.item = item;
+  }
+  getDetail() {
+    return (
+      this.item.description +
+      " จำนวน : " +
+      this.quantity +
+      " รายการ  ราคา : " +
+      this.calcSubTotal() +
+      " บาท"
+    );
   }
 }
 
@@ -235,10 +254,64 @@ class Credit extends Payment {
 
 // oldMain();
 
+// const main = () => {
+//   let customer3 = new Customer("John Doe", "London");
+//   // console.log(customer3);
+
+//   const item6 = new Item("0.2", "Spaghetti", "199");
+//   const item7 = new Item("0.1", "Pizza", "99");
+//   const item8 = new Item("0.1", "Icecream", "59");
+//   const item9 = new Item("0.2", "lasagna", "199");
+//   const item10 = new Item("0.05", "Wine", "100");
+
+//   const order3 = new Order("2024/01/10", "In process");
+//   const order4 = new Order("2024/01/10", "In process");
+
+//   const orderDetail6 = new OrderDetail("3", "Tax included");
+//   const orderDetail7 = new OrderDetail("3", "Tax");
+
+//   orderDetail6.addItem(item6);
+//   orderDetail7.addItem(item10);
+
+//   order3.addOrderDetail(orderDetail6);
+//   order4.addOrderDetail(orderDetail7);
+
+//   customer3.addOrder(order3);
+//   customer3.addOrder(order4);
+
+//   console.log("ชื่อ : " + customer3.name);
+//   console.log("จำนวนครั้ง : " + customer3.orders.length);
+//   for (k = 0; k < customer3.orders.length; k++) {
+//     console.log("คำสั่งซื้อที่ : " + (k + 1));
+//     for (j = 0; j < customer3.orders[k].orderDetails.length; j++) {
+//       console.log(
+//         "ลำดับที่ : " +
+//           (j + 1) +
+//           " รายการ : " +
+//           customer3.orders[k].orderDetails[j].item.description +
+//           " จำนวน : " +
+//           customer3.orders[k].orderDetails[j].quantity +
+//           " ราคา : " +
+//           customer3.orders[k].orderDetails[j].calcSubTotal() +
+//           " บาท"
+//       );
+//       console.log(
+//         "น้ำหนัก : " +
+//           customer3.orders[k].orderDetails[j].calcWeight() +
+//           " กิโลกรัม"
+//       );
+//       console.log(
+//         "ภาษี : " + customer3.orders[k].orderDetails[j].calcTax() + " บาท"
+//       );
+//     }
+//     console.log("รวม : " + customer3.orders[k].calcTotal());
+//   }
+// };
+
+// main();
+
 const main = () => {
   let customer3 = new Customer("John Doe", "London");
-  // console.log(customer3);
-
   const item6 = new Item("0.2", "Spaghetti", "199");
   const item7 = new Item("0.1", "Pizza", "99");
   const item8 = new Item("0.1", "Icecream", "59");
@@ -261,32 +334,10 @@ const main = () => {
   customer3.addOrder(order4);
 
   console.log("ชื่อ : " + customer3.name);
-  console.log("จำนวนครั้ง : " + customer3.orders.length);
-  for (k = 0; k < customer3.orders.length; k++) {
-    console.log("คำสั่งซื้อที่ : " + (k + 1));
-    for (j = 0; j < customer3.orders[k].orderDetails.length; j++) {
-      console.log(
-        "ลำดับที่ : " +
-          (j + 1) +
-          " รายการ : " +
-          customer3.orders[k].orderDetails[j].item.description +
-          " จำนวน : " +
-          customer3.orders[k].orderDetails[j].quantity +
-          " ราคา : " +
-          customer3.orders[k].orderDetails[j].calcSubTotal() +
-          " บาท"
-      );
-      console.log(
-        "น้ำหนัก : " +
-          customer3.orders[k].orderDetails[j].calcWeight() +
-          " กิโลกรัม"
-      );
-      console.log(
-        "ภาษี : " + customer3.orders[k].orderDetails[j].calcTax() + " บาท"
-      );
-    }
-    console.log("รวม : " + customer3.orders[k].calcTotal());
+  console.log("จำนวนคำสั่งซื้อ : " + customer3.orders.length);
+  for (let i = 0; i < customer3.orders.length; i++) {
+    console.log("คำสั่งซื้อ : " + (i + 1));
+    customer3.orders[i].printDetail();
   }
 };
-
 main();
